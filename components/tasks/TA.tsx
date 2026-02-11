@@ -1,3 +1,10 @@
+import {
+  Card,
+  CardAction,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Button } from "../ui/button";
 import { Plus, UserCheck } from "lucide-react";
 
@@ -27,26 +34,26 @@ const mockTareasAsignadas = [
 
 export const TareasAsignadasComponent = () => {
   return (
-    <div className="flex h-full w-full flex-col bg-blue-50/50">
-      {/* Header */}
-      <div className="flex items-center justify-between border-b border-blue-200 bg-blue-100/50 px-4 py-3">
+    <Card className="flex h-full w-full flex-col rounded-none border-8 border-r bg-blue-50/50 py-0">
+      <CardHeader className="border-b border-blue-200 bg-blue-100/50 px-4 py-3">
         <div className="flex items-center gap-2">
           <UserCheck className="h-5 w-5 text-blue-600" />
-          <h2 className="text-lg font-semibold text-blue-800">
+          <CardTitle className="text-lg text-blue-800">
             Tareas Asignadas
-          </h2>
+          </CardTitle>
         </div>
-        <Button
-          size="icon"
-          variant="ghost"
-          className="text-blue-600 hover:bg-blue-200"
-        >
-          <Plus className="h-5 w-5" />
-        </Button>
-      </div>
+        <CardAction>
+          <Button
+            size="icon"
+            variant="ghost"
+            className="text-blue-600 hover:bg-blue-200"
+          >
+            <Plus className="h-5 w-5" />
+          </Button>
+        </CardAction>
+      </CardHeader>
 
-      {/* Lista de tareas */}
-      <div className="flex-1 overflow-y-auto">
+      <CardContent className="flex-1 overflow-y-auto p-0">
         {mockTareasAsignadas.map((tarea) => (
           <div
             key={tarea.id}
@@ -70,7 +77,7 @@ export const TareasAsignadasComponent = () => {
             <p className="text-xs text-blue-400">Vence: {tarea.dueDate}</p>
           </div>
         ))}
-      </div>
-    </div>
+      </CardContent>
+    </Card>
   );
 };

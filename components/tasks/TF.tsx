@@ -1,3 +1,10 @@
+import {
+  Card,
+  CardAction,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Button } from "../ui/button";
 import { CheckCircle2, Archive } from "lucide-react";
 
@@ -24,26 +31,26 @@ const mockTareasFinalizadas = [
 
 export const TareasFinalizadasComponent = () => {
   return (
-    <div className="flex h-full w-full flex-col bg-green-50/50">
-      {/* Header */}
-      <div className="flex items-center justify-between border-b border-green-200 bg-green-100/50 px-4 py-3">
+    <Card className="flex h-full w-full flex-col rounded-none border-8 border-r bg-green-50/50 py-0">
+      <CardHeader className="border-b border-green-200 bg-green-100/50 px-4 py-3">
         <div className="flex items-center gap-2">
           <CheckCircle2 className="h-5 w-5 text-green-600" />
-          <h2 className="text-lg font-semibold text-green-800">
+          <CardTitle className="text-lg text-green-800">
             Tareas Finalizadas
-          </h2>
+          </CardTitle>
         </div>
-        <Button
-          size="icon"
-          variant="ghost"
-          className="text-green-600 hover:bg-green-200"
-        >
-          <Archive className="h-5 w-5" />
-        </Button>
-      </div>
+        <CardAction>
+          <Button
+            size="icon"
+            variant="ghost"
+            className="text-green-600 hover:bg-green-200"
+          >
+            <Archive className="h-5 w-5" />
+          </Button>
+        </CardAction>
+      </CardHeader>
 
-      {/* Lista de tareas */}
-      <div className="flex-1 overflow-y-auto">
+      <CardContent className="flex-1 overflow-y-auto p-0">
         {mockTareasFinalizadas.map((tarea) => (
           <div
             key={tarea.id}
@@ -63,7 +70,7 @@ export const TareasFinalizadasComponent = () => {
             </p>
           </div>
         ))}
-      </div>
-    </div>
+      </CardContent>
+    </Card>
   );
 };

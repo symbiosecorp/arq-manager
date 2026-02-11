@@ -1,3 +1,10 @@
+import {
+  Card,
+  CardAction,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Button } from "../ui/button";
 import { Plus, Inbox } from "lucide-react";
 
@@ -27,26 +34,20 @@ const mockTareasRecibidas = [
 
 export const TareasRecibidasComponent = () => {
   return (
-    <div className="flex h-full w-full flex-col bg-amber-50/50">
-      {/* Header */}
-      <div className="flex items-center justify-between border-b border-amber-200 bg-amber-100/50 px-4 py-3">
+    <Card className="flex h-full w-full flex-col rounded-none border-8 border-r bg-amber-50/50 py-0">
+      <CardHeader className="border-b border-amber-200 bg-amber-100/50 px-4 py-3">
         <div className="flex items-center gap-2">
           <Inbox className="h-5 w-5 text-amber-600" />
-          <h2 className="text-lg font-semibold text-amber-800">
-            Tareas Recibidas
-          </h2>
+          <CardTitle className="text-lg text-amber-800">Tareas Recibidas</CardTitle>
         </div>
-        <Button
-          size="icon"
-          variant="ghost"
-          className="text-amber-600 hover:bg-amber-200"
-        >
-          <Plus className="h-5 w-5" />
-        </Button>
-      </div>
+        <CardAction>
+          <Button size="icon" variant="ghost" className="text-amber-600 hover:bg-amber-200">
+            <Plus className="h-5 w-5" />
+          </Button>
+        </CardAction>
+      </CardHeader>
 
-      {/* Lista de tareas */}
-      <div className="flex-1 overflow-y-auto">
+      <CardContent className="flex-1 overflow-y-auto p-0">
         {mockTareasRecibidas.map((tarea) => (
           <div
             key={tarea.id}
@@ -67,12 +68,10 @@ export const TareasRecibidasComponent = () => {
               </span>
             </div>
             <p className="mt-1 text-sm text-amber-600">De: {tarea.from}</p>
-            <p className="text-xs text-amber-400">
-              Recibido: {tarea.receivedDate}
-            </p>
+            <p className="text-xs text-amber-400">Recibido: {tarea.receivedDate}</p>
           </div>
         ))}
-      </div>
-    </div>
+      </CardContent>
+    </Card>
   );
 };

@@ -1,5 +1,12 @@
+import {
+  Card,
+  CardAction,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Button } from "../ui/button";
-import { Plus } from "lucide-react";
+import { Plus, StickyNote } from "lucide-react";
 
 const mockNotes = [
   {
@@ -24,41 +31,47 @@ const mockNotes = [
 
 export const Notes = () => {
   return (
-    <div className="flex h-full w-full flex-col bg-yellow-200">
-      {/* Header */}
-      <div className="flex items-center justify-between border-b px-4 py-3 border-b-black">
-        <h2 className="text-lg font-semibold">Notas</h2>
-        <Button size="icon" variant="ghost">
-          <Plus className="h-5 w-5" />
-        </Button>
-      </div>
+    <Card className="flex h-full w-full flex-col rounded-none border-8 bg-purple-50/50 py-0">
+      <CardHeader className="border-b border-purple-200 bg-purple-100/50 px-4 py-3">
+        <div className="flex items-center gap-2">
+          <StickyNote className="h-5 w-5 text-purple-600" />
+          <CardTitle className="text-lg text-purple-800">Notas</CardTitle>
+        </div>
+        <CardAction>
+          <Button
+            size="icon"
+            variant="ghost"
+            className="text-purple-600 hover:bg-purple-200"
+          >
+            <Plus className="h-5 w-5" />
+          </Button>
+        </CardAction>
+      </CardHeader>
 
-      {/* Lista de notas */}
-      <div className="flex-1 overflow-y-auto">
+      <CardContent className="flex-1 overflow-y-auto p-0">
         {mockNotes.map((note) => (
           <div
             key={note.id}
-            className="cursor-pointer border-b border-b-black px-4 py-3 transition-colors hover:bg-muted/50"
+            className="cursor-pointer border-b border-purple-100 px-4 py-3 transition-colors hover:bg-purple-100/50"
           >
             <div className="flex items-start justify-between">
-              <h3 className="font-medium">{note.title}</h3>
-              <span className="text-xs text-muted-foreground">{note.date}</span>
+              <h3 className="font-medium text-purple-900">{note.title}</h3>
+              <span className="text-xs text-purple-400">{note.date}</span>
             </div>
-            <p className="mt-1 line-clamp-2 text-sm text-muted-foreground">
+            <p className="mt-1 line-clamp-2 text-sm text-purple-600">
               {note.description}
             </p>
           </div>
         ))}
-      </div>
 
-      {/* Estado vacío (oculto por ahora) */}
-      {mockNotes.length === 0 && (
-        <div className="flex flex-1 flex-col items-center justify-center text-muted-foreground">
-          <Plus className="mb-2 h-10 w-10" />
-          <p>No hay notas</p>
-          <p className="text-sm">Presiona + para agregar una nota</p>
-        </div>
-      )}
-    </div>
+        {mockNotes.length === 0 && (
+          <div className="flex flex-1 flex-col items-center justify-center py-8 text-purple-400">
+            <Plus className="mb-2 h-10 w-10" />
+            <p>No hay notas</p>
+            <p className="text-sm">Presiona + para agregar una nota</p>
+          </div>
+        )}
+      </CardContent>
+    </Card>
   );
 };
