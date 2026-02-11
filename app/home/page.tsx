@@ -1,12 +1,15 @@
+import { Notes } from "@/components/notes/Notes";
+import {TareasAsignadasComponent}  from "@/components/tasks/TA";
+import { TareasFinalizadasComponent } from "@/components/tasks/TF";
+import { TareasRecibidasComponent } from "@/components/tasks/TR";
+
 export default function HomePage() {
   return (
-    <div className="flex min-h-svh items-center justify-center">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold">¡Bienvenido!</h1>
-        <p className="mt-4 text-muted-foreground">
-          Has iniciado sesión correctamente.
-        </p>
-      </div>
+    <div className="grid h-screen w-full grid-cols-4">
+      <Notes/>
+      <TareasAsignadasComponent/>
+      <TareasRecibidasComponent/>
+      <TareasFinalizadasComponent/>
     </div>
   );
 }
