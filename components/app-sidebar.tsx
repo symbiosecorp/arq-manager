@@ -95,6 +95,10 @@ const data = {
           title: "Usuarios",
           url: "/settings",
         },
+        {
+          title: "Vacaciones",
+          url: "/settings",
+        },
       ],
     },
     {
