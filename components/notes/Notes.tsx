@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Card,
   CardAction,
@@ -5,8 +7,17 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { Button } from "../ui/button";
 import { Plus, StickyNote } from "lucide-react";
+import { NewNote } from "./NewNote";
 
 const mockNotes = [
   {
@@ -35,16 +46,31 @@ export const Notes = () => {
       <CardHeader className="border-b border-purple-200 dark:border-purple-800 bg-purple-100/50 dark:bg-purple-900/50 px-4 py-3">
         <div className="flex items-center gap-2">
           <StickyNote className="h-5 w-5 text-purple-600 dark:text-purple-400" />
-          <CardTitle className="text-lg text-purple-800 dark:text-purple-200">Notas</CardTitle>
+          <CardTitle className="text-lg text-purple-800 dark:text-purple-200">
+            Notas
+          </CardTitle>
         </div>
         <CardAction>
-          <Button
-            size="icon"
-            variant="ghost"
-            className="text-purple-600 dark:text-purple-400 hover:bg-purple-200 dark:hover:bg-purple-800"
-          >
-            <Plus className="h-5 w-5" />
-          </Button>
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button
+                size="icon"
+                variant="ghost"
+                className="text-purple-600 dark:text-purple-400 hover:bg-purple-200 dark:hover:bg-purple-800"
+              >
+                <Plus className="h-5 w-5" />
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-md">
+              <DialogHeader>
+                <DialogTitle>Nueva Nota</DialogTitle>
+                <DialogDescription>
+                  Crea una nueva nota para tu proyecto.
+                </DialogDescription>
+              </DialogHeader>
+              <NewNote />
+            </DialogContent>
+          </Dialog>
         </CardAction>
       </CardHeader>
 
@@ -55,8 +81,12 @@ export const Notes = () => {
             className="cursor-pointer border-b border-purple-100 dark:border-purple-900 px-4 py-3 transition-colors hover:bg-purple-100/50 dark:hover:bg-purple-900/50"
           >
             <div className="flex items-start justify-between">
-              <h3 className="font-medium text-purple-900 dark:text-purple-100">{note.title}</h3>
-              <span className="text-xs text-purple-400 dark:text-purple-600">{note.date}</span>
+              <h3 className="font-medium text-purple-900 dark:text-purple-100">
+                {note.title}
+              </h3>
+              <span className="text-xs text-purple-400 dark:text-purple-600">
+                {note.date}
+              </span>
             </div>
             <p className="mt-1 line-clamp-2 text-sm text-purple-600 dark:text-purple-400">
               {note.description}

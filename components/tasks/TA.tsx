@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Card,
   CardAction,
@@ -5,8 +7,17 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { Button } from "../ui/button";
 import { Plus, UserCheck } from "lucide-react";
+import { NewTask } from "./NewTask";
 
 const mockTareasAsignadas = [
   {
@@ -43,13 +54,26 @@ export const TareasAsignadasComponent = () => {
           </CardTitle>
         </div>
         <CardAction>
-          <Button
-            size="icon"
-            variant="ghost"
-            className="text-blue-600 dark:text-blue-400 hover:bg-blue-200 dark:hover:bg-blue-800"
-          >
-            <Plus className="h-5 w-5" />
-          </Button>
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button
+                size="icon"
+                variant="ghost"
+                className="text-blue-600 dark:text-blue-400 hover:bg-blue-200 dark:hover:bg-blue-800"
+              >
+                <Plus className="h-5 w-5" />
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-lg">
+              <DialogHeader>
+                <DialogTitle>Nueva Tarea</DialogTitle>
+                <DialogDescription>
+                  Crea una nueva tarea y asígnala a los usuarios correspondientes.
+                </DialogDescription>
+              </DialogHeader>
+              <NewTask />
+            </DialogContent>
+          </Dialog>
         </CardAction>
       </CardHeader>
 
