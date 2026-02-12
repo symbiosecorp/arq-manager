@@ -31,11 +31,11 @@ const mockTareasFinalizadas = [
 
 export const TareasFinalizadasComponent = () => {
   return (
-    <Card className="flex h-full w-full flex-col rounded-none border-8 border-r bg-green-50/50 py-0">
-      <CardHeader className="border-b border-green-200 bg-green-100/50 px-4 py-3">
+    <Card className="flex h-full w-full flex-col rounded-none border-8 border-r bg-green-50/50 dark:bg-green-950/50 py-0">
+      <CardHeader className="border-b border-green-200 dark:border-green-800 bg-green-100/50 dark:bg-green-900/50 px-4 py-3">
         <div className="flex items-center gap-2">
-          <CheckCircle2 className="h-5 w-5 text-green-600" />
-          <CardTitle className="text-lg text-green-800">
+          <CheckCircle2 className="h-5 w-5 text-green-600 dark:text-green-400" />
+          <CardTitle className="text-lg text-green-800 dark:text-green-200">
             Tareas Finalizadas
           </CardTitle>
         </div>
@@ -43,7 +43,7 @@ export const TareasFinalizadasComponent = () => {
           <Button
             size="icon"
             variant="ghost"
-            className="text-green-600 hover:bg-green-200"
+            className="text-green-600 dark:text-green-400 hover:bg-green-200 dark:hover:bg-green-800"
           >
             <Archive className="h-5 w-5" />
           </Button>
@@ -54,18 +54,18 @@ export const TareasFinalizadasComponent = () => {
         {mockTareasFinalizadas.map((tarea) => (
           <div
             key={tarea.id}
-            className="cursor-pointer border-b border-green-100 px-4 py-3 transition-colors hover:bg-green-100/50"
+            className="cursor-pointer border-b border-green-100 dark:border-green-900 px-4 py-3 transition-colors hover:bg-green-100/50 dark:hover:bg-green-900/50"
           >
             <div className="flex items-start justify-between">
               <div className="flex items-center gap-2">
-                <CheckCircle2 className="h-4 w-4 text-green-500" />
-                <h3 className="font-medium text-green-900">{tarea.title}</h3>
+                <CheckCircle2 className="h-4 w-4 text-green-500 dark:text-green-400" />
+                <h3 className="font-medium text-green-900 dark:text-green-100">{tarea.title}</h3>
               </div>
             </div>
-            <p className="mt-1 pl-6 text-sm text-green-600">
+            <p className="mt-1 pl-6 text-sm text-green-600 dark:text-green-400">
               Por: {tarea.completedBy}
             </p>
-            <p className="pl-6 text-xs text-green-400">
+            <p className="pl-6 text-xs text-green-400 dark:text-green-600">
               Completado: {tarea.completedDate}
             </p>
           </div>

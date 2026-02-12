@@ -34,11 +34,11 @@ const mockTareasAsignadas = [
 
 export const TareasAsignadasComponent = () => {
   return (
-    <Card className="flex h-full w-full flex-col rounded-none border-8 border-r bg-blue-50/50 py-0">
-      <CardHeader className="border-b border-blue-200 bg-blue-100/50 px-4 py-3">
+    <Card className="flex h-full w-full flex-col rounded-none border-8 border-r bg-blue-50/50 dark:bg-blue-950/50 py-0">
+      <CardHeader className="border-b border-blue-200 dark:border-blue-800 bg-blue-100/50 dark:bg-blue-900/50 px-4 py-3">
         <div className="flex items-center gap-2">
-          <UserCheck className="h-5 w-5 text-blue-600" />
-          <CardTitle className="text-lg text-blue-800">
+          <UserCheck className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+          <CardTitle className="text-lg text-blue-800 dark:text-blue-200">
             Tareas Asignadas
           </CardTitle>
         </div>
@@ -46,7 +46,7 @@ export const TareasAsignadasComponent = () => {
           <Button
             size="icon"
             variant="ghost"
-            className="text-blue-600 hover:bg-blue-200"
+            className="text-blue-600 dark:text-blue-400 hover:bg-blue-200 dark:hover:bg-blue-800"
           >
             <Plus className="h-5 w-5" />
           </Button>
@@ -57,24 +57,24 @@ export const TareasAsignadasComponent = () => {
         {mockTareasAsignadas.map((tarea) => (
           <div
             key={tarea.id}
-            className="cursor-pointer border-b border-blue-100 px-4 py-3 transition-colors hover:bg-blue-100/50"
+            className="cursor-pointer border-b border-blue-100 dark:border-blue-900 px-4 py-3 transition-colors hover:bg-blue-100/50 dark:hover:bg-blue-900/50"
           >
             <div className="flex items-start justify-between">
-              <h3 className="font-medium text-blue-900">{tarea.title}</h3>
+              <h3 className="font-medium text-blue-900 dark:text-blue-100">{tarea.title}</h3>
               <span
                 className={`rounded-full px-2 py-0.5 text-xs ${
                   tarea.priority === "Alta"
-                    ? "bg-red-100 text-red-700"
-                    : "bg-yellow-100 text-yellow-700"
+                    ? "bg-red-100 dark:bg-red-900 text-red-700 dark:text-red-300"
+                    : "bg-yellow-100 dark:bg-yellow-900 text-yellow-700 dark:text-yellow-300"
                 }`}
               >
                 {tarea.priority}
               </span>
             </div>
-            <p className="mt-1 text-sm text-blue-600">
+            <p className="mt-1 text-sm text-blue-600 dark:text-blue-400">
               Asignado a: {tarea.assignedTo}
             </p>
-            <p className="text-xs text-blue-400">Vence: {tarea.dueDate}</p>
+            <p className="text-xs text-blue-400 dark:text-blue-600">Vence: {tarea.dueDate}</p>
           </div>
         ))}
       </CardContent>
