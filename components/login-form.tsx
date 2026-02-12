@@ -38,7 +38,7 @@ export function LoginForm({
 
   function onSubmit(data: LoginFormData) {
     if (data.username === "usuario" && data.password === "123") {
-      router.push("/home");
+      router.push("/dashboard");
     } else {
       form.setError("root", {
         message: "Credenciales incorrectas",

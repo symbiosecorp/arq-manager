@@ -14,13 +14,14 @@ import {
   SidebarTrigger,
 } from "@/components/ui/sidebar"
 import HomePage from "../home/page"
+import Image from "next/image"
 
 export default function Page() {
   return (
     <SidebarProvider>
       <AppSidebar />
       <SidebarInset>
-        <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12">
+        <header className="relative flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12">
           <div className="flex items-center gap-2 px-4">
             <SidebarTrigger className="-ml-1" />
             <Separator
@@ -40,6 +41,15 @@ export default function Page() {
                 </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb>
+          </div>
+          <div className="absolute right-4 top-1/2 -translate-y-1/2">
+            <Image
+              src="/LogoB.svg"
+              alt="Logo"
+              width={40}
+              height={40}
+              className="h-10 w-auto transition-all duration-300"
+            />
           </div>
         </header>
         <HomePage/>

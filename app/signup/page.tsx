@@ -23,7 +23,7 @@ export default function SignupPage() {
       </div>
       <div className="bg-muted relative hidden lg:block">
         <Image
-        src={"/vercel.svg"}
+        src={"/LogoN.svg"}
         alt="Image"
         className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
         width={100}
