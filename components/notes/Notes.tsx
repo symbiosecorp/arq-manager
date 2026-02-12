@@ -31,7 +31,7 @@ const mockNotes = [
 
 export const Notes = () => {
   return (
-    <Card className="flex h-full w-full flex-col rounded-none border-8 bg-purple-50/50 dark:bg-purple-950/50 py-0">
+    <Card className="flex h-full w-full flex-col rounded-none border-4 lg:border-8 bg-purple-50/50 dark:bg-purple-950/50 py-0">
       <CardHeader className="border-b border-purple-200 dark:border-purple-800 bg-purple-100/50 dark:bg-purple-900/50 px-4 py-3">
         <div className="flex items-center gap-2">
           <StickyNote className="h-5 w-5 text-purple-600 dark:text-purple-400" />

@@ -11,7 +11,9 @@ import {
   Map,
   PieChart,
   Settings2,
-  SquareTerminal,
+  LayoutList,
+  Hammer,
+  RulerDimensionLine
 } from "lucide-react"
 
 import { NavMain } from "@/components/nav-main"
@@ -51,29 +53,56 @@ const data = {
     },
   ],
   navMain: [
-    {
-      title: "Home",
+        {
+      title: "Direccion",
       url: "#",
-      icon: SquareTerminal,
+      icon: Settings2,
       items: [
         {
-          title: "Notas",
-          url: "/home",
+          title: "Cotización",
+          url: "#",
         },
         {
-          title: "Tareas",
-          url: "/home",
+          title: "Presupuesto",
+          url: "#",
         },
         {
-          title: "Configuración",
+          title: "Recibos",
+          url: "#",
+        },
+        {
+          title: "Limits",
+          url: "#",
+        },
+      ],
+    },
+    {
+      title: "AuxAdmin",
+      url: "#",
+      icon: LayoutList,
+      items: [
+        {
+          title: "Proyectos",
+          url: "#",
+        },
+        {
+          title: "Proveedores",
+          url: "#",
+        },
+        {
+          title: "Recibos",
+          url: "/settings",
+        },
+        {
+          title: "Usuarios",
           url: "/settings",
         },
       ],
     },
     {
-      title: "Models",
+      title: "Obra",
       url: "#",
-      icon: Bot,
+      icon: Hammer,
       items: [
         {
           title: "Genesis",
@@ -90,9 +119,9 @@ const data = {
       ],
     },
     {
-      title: "Documentation",
+      title: "Arquitectura",
       url: "#",
-      icon: BookOpen,
+      icon: RulerDimensionLine,
       items: [
         {
           title: "Introduction",
@@ -108,29 +137,6 @@ const data = {
         },
         {
           title: "Changelog",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Settings",
-      url: "#",
-      icon: Settings2,
-      items: [
-        {
-          title: "General",
-          url: "#",
-        },
-        {
-          title: "Team",
-          url: "#",
-        },
-        {
-          title: "Billing",
-          url: "#",
-        },
-        {
-          title: "Limits",
           url: "#",
         },
       ],

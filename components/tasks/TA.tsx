@@ -34,7 +34,7 @@ const mockTareasAsignadas = [
 
 export const TareasAsignadasComponent = () => {
   return (
-    <Card className="flex h-full w-full flex-col rounded-none border-8 border-r bg-blue-50/50 dark:bg-blue-950/50 py-0">
+    <Card className="flex h-full w-full flex-col rounded-none border-4 border-r-4 lg:border-8 lg:border-r-8 bg-blue-50/50 dark:bg-blue-950/50 py-0">
       <CardHeader className="border-b border-blue-200 dark:border-blue-800 bg-blue-100/50 dark:bg-blue-900/50 px-4 py-3">
         <div className="flex items-center gap-2">
           <UserCheck className="h-5 w-5 text-blue-600 dark:text-blue-400" />
