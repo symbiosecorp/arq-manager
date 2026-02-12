@@ -68,7 +68,8 @@ export const TareasAsignadasComponent = () => {
               <DialogHeader>
                 <DialogTitle>Nueva Tarea</DialogTitle>
                 <DialogDescription>
-                  Crea una nueva tarea y asígnala a los usuarios correspondientes.
+                  Crea una nueva tarea y asígnala a los usuarios
+                  correspondientes.
                 </DialogDescription>
               </DialogHeader>
               <NewTask />
@@ -84,7 +85,9 @@ export const TareasAsignadasComponent = () => {
             className="cursor-pointer border-b border-blue-100 dark:border-blue-900 px-4 py-3 transition-colors hover:bg-blue-100/50 dark:hover:bg-blue-900/50"
           >
             <div className="flex items-start justify-between">
-              <h3 className="font-medium text-blue-900 dark:text-blue-100">{tarea.title}</h3>
+              <h3 className="font-medium text-blue-900 dark:text-blue-100">
+                {tarea.title}
+              </h3>
               <span
                 className={`rounded-full px-2 py-0.5 text-xs ${
                   tarea.priority === "Alta"
@@ -98,7 +101,9 @@ export const TareasAsignadasComponent = () => {
             <p className="mt-1 text-sm text-blue-600 dark:text-blue-400">
               Asignado a: {tarea.assignedTo}
             </p>
-            <p className="text-xs text-blue-400 dark:text-blue-600">Vence: {tarea.dueDate}</p>
+            <p className="text-xs text-blue-400 dark:text-blue-600">
+              Vence: {tarea.dueDate}
+            </p>
           </div>
         ))}
       </CardContent>

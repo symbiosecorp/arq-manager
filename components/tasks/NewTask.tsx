@@ -139,7 +139,7 @@ export function NewTask() {
       form.setValue(
         "assignedUsers",
         current.filter((id) => id !== userId),
-        { shouldValidate: true }
+        { shouldValidate: true },
       );
     } else {
       form.setValue("assignedUsers", [...current, userId], {
@@ -150,7 +150,9 @@ export function NewTask() {
 
   function onSubmit(data: z.infer<typeof formSchema>) {
     const assignedNames = data.assignedUsers.map((id) => {
-      const user = areasWithUsers.flatMap((a) => a.users).find((u) => u.id === id);
+      const user = areasWithUsers
+        .flatMap((a) => a.users)
+        .find((u) => u.id === id);
       return user?.name;
     });
 
@@ -302,13 +304,15 @@ export function NewTask() {
                             <div
                               className={cn(
                                 "h-2 w-2 rounded-full",
-                                priorities.find((p) => p.value === selectedPriority)
-                                  ?.color
+                                priorities.find(
+                                  (p) => p.value === selectedPriority,
+                                )?.color,
                               )}
                             />
                             {
-                              priorities.find((p) => p.value === selectedPriority)
-                                ?.label
+                              priorities.find(
+                                (p) => p.value === selectedPriority,
+                              )?.label
                             }
                           </div>
                         ) : (
@@ -332,7 +336,7 @@ export function NewTask() {
                               <div
                                 className={cn(
                                   "mr-2 h-2 w-2 rounded-full",
-                                  priority.color
+                                  priority.color,
                                 )}
                               />
                               {priority.label}
@@ -358,7 +362,9 @@ export function NewTask() {
               control={form.control}
               render={({ field, fieldState }) => (
                 <Field data-invalid={fieldState.invalid}>
-                  <FieldLabel htmlFor="new-task-duedate">Vencimiento</FieldLabel>
+                  <FieldLabel htmlFor="new-task-duedate">
+                    Vencimiento
+                  </FieldLabel>
                   <Input
                     {...field}
                     id="new-task-duedate"
