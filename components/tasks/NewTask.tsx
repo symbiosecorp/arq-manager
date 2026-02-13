@@ -37,7 +37,6 @@ import {
   CommandList,
 } from "@/components/ui/command";
 import { Checkbox } from "@/components/ui/checkbox";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
 
 // Datos mock de áreas y usuarios
@@ -241,33 +240,31 @@ export function NewTask() {
                   <PopoverContent className="w-75 p-0" align="start">
                     <Command>
                       <CommandInput placeholder="Buscar usuario..." />
-                      <CommandList>
+                      <CommandList className="max-h-64">
                         <CommandEmpty>No se encontraron usuarios.</CommandEmpty>
-                        <ScrollArea className="h-64">
-                          {areasWithUsers.map((areaGroup) => (
-                            <CommandGroup
-                              key={areaGroup.area}
-                              heading={areaGroup.area}
-                            >
-                              {areaGroup.users.map((user) => (
-                                <CommandItem
-                                  key={user.id}
-                                  value={user.name}
-                                  onSelect={() => toggleUser(user.id)}
-                                >
-                                  <Checkbox
-                                    checked={selectedUsers.includes(user.id)}
-                                    className="mr-2"
-                                  />
-                                  {user.name}
-                                  {selectedUsers.includes(user.id) && (
-                                    <Check className="ml-auto h-4 w-4" />
-                                  )}
-                                </CommandItem>
-                              ))}
-                            </CommandGroup>
-                          ))}
-                        </ScrollArea>
+                        {areasWithUsers.map((areaGroup) => (
+                          <CommandGroup
+                            key={areaGroup.area}
+                            heading={areaGroup.area}
+                          >
+                            {areaGroup.users.map((user) => (
+                              <CommandItem
+                                key={user.id}
+                                value={user.name}
+                                onSelect={() => toggleUser(user.id)}
+                              >
+                                <Checkbox
+                                  checked={selectedUsers.includes(user.id)}
+                                  className="mr-2"
+                                />
+                                {user.name}
+                                {selectedUsers.includes(user.id) && (
+                                  <Check className="ml-auto h-4 w-4" />
+                                )}
+                              </CommandItem>
+                            ))}
+                          </CommandGroup>
+                        ))}
                       </CommandList>
                     </Command>
                   </PopoverContent>

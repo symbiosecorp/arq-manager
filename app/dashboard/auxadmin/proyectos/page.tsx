@@ -8,10 +8,10 @@ import {
 } from "@/components/ui/breadcrumb";
 import { Separator } from "@/components/ui/separator";
 import { SidebarTrigger } from "@/components/ui/sidebar";
-import HomePage from "../home/page";
+import { ProjectsPage } from "@/components/projects/ProjectsPage";
 import Image from "next/image";
 
-export default function Page() {
+export default function AuxAdminProyectosPage() {
   return (
     <>
       <header className="relative flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12">
@@ -27,8 +27,12 @@ export default function Page() {
                 <BreadcrumbLink href="/dashboard">Dashboard</BreadcrumbLink>
               </BreadcrumbItem>
               <BreadcrumbSeparator className="hidden md:block" />
+              <BreadcrumbItem className="hidden md:block">
+                <BreadcrumbLink href="#">AuxAdmin</BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator className="hidden md:block" />
               <BreadcrumbItem>
-                <BreadcrumbPage>Home</BreadcrumbPage>
+                <BreadcrumbPage>Proyectos</BreadcrumbPage>
               </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
@@ -43,7 +47,7 @@ export default function Page() {
           />
         </div>
       </header>
-      <HomePage />
+      <ProjectsPage area="auxadmin" />
     </>
   );
 }
