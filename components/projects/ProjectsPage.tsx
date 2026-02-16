@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import {
   Card,
   CardContent,
@@ -10,6 +11,14 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import {
   Building2,
   Calendar,
   MapPin,
@@ -18,6 +27,7 @@ import {
   TrendingUp,
   Clock,
 } from "lucide-react";
+import { NewProject } from "@/components/projects/NewProject";
 
 interface ProjectsPageProps {
   area: "auxadmin" | "obra" | "arquitectura";
@@ -134,6 +144,7 @@ function getProgressColor(progress: number) {
 
 export function ProjectsPage({ area }: ProjectsPageProps) {
   const config = areaConfig[area];
+  const [openNewProject, setOpenNewProject] = useState(false);
 
   return (
     <div className="flex flex-1 flex-col gap-6 p-6">
@@ -143,10 +154,24 @@ export function ProjectsPage({ area }: ProjectsPageProps) {
           <h1 className="text-2xl font-bold tracking-tight">{config.title}</h1>
           <p className="text-muted-foreground">{config.description}</p>
         </div>
-        <Button>
-          <Plus className="mr-2 h-4 w-4" />
-          Nuevo Proyecto
-        </Button>
+        <Dialog open={openNewProject} onOpenChange={setOpenNewProject}>
+          <DialogTrigger asChild>
+            <Button>
+              <Plus className="mr-2 h-4 w-4" />
+              Nuevo Proyecto
+            </Button>
+          </DialogTrigger>
+          <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+            <DialogHeader>
+              <DialogTitle>Crear Nuevo Proyecto</DialogTitle>
+              <DialogDescription>
+                Completa la información para registrar un nuevo proyecto en el
+                sistema.
+              </DialogDescription>
+            </DialogHeader>
+            <NewProject />
+          </DialogContent>
+        </Dialog>
       </div>
 
       {/* Stats */}
