@@ -57,6 +57,14 @@ const data = {
       icon: Settings2,
       items: [
         {
+          title: "Inicio",
+          url: "/dashboard",
+        },
+        {
+          title: "Proyectos",
+          url: "/dashboard/direccion/proyectos",
+        },
+        {
           title: "Cotización",
           url: "#",
         },
