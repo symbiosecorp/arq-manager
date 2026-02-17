@@ -51,6 +51,15 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
+import { Calendar } from "@/components/ui/calendar";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { format } from "date-fns";
+import { es } from "date-fns/locale";
+import { cn } from "@/lib/utils";
 import {
   Search,
   Plus,
@@ -64,7 +73,7 @@ import {
   Eye,
   EyeOff,
   Phone,
-  Calendar,
+  CalendarIcon,
 } from "lucide-react";
 
 // Datos de ejemplo - en producción vendrían de una API/DB
@@ -340,19 +349,49 @@ export function UsersPage() {
                 </div>
               </div>
               <div className="grid gap-2">
-                <Label htmlFor="birthDate">Fecha de nacimiento</Label>
-                <div className="relative">
-                  <Calendar className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-                  <Input
-                    id="birthDate"
-                    type="date"
-                    value={newUser.birthDate}
-                    onChange={(e) =>
-                      setNewUser({ ...newUser, birthDate: e.target.value })
-                    }
-                    className="pl-9"
-                  />
-                </div>
+                <Label>Fecha de nacimiento</Label>
+                <Popover>
+                  <PopoverTrigger asChild>
+                    <Button
+                      variant="outline"
+                      className={cn(
+                        "w-full justify-start text-left font-normal",
+                        !newUser.birthDate && "text-muted-foreground",
+                      )}
+                    >
+                      <CalendarIcon className="mr-2 h-4 w-4" />
+                      {newUser.birthDate ? (
+                        format(new Date(newUser.birthDate), "PPP", {
+                          locale: es,
+                        })
+                      ) : (
+                        <span>Seleccionar fecha</span>
+                      )}
+                    </Button>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-auto p-0" align="start">
+                    <Calendar
+                      mode="single"
+                      selected={
+                        newUser.birthDate
+                          ? new Date(newUser.birthDate)
+                          : undefined
+                      }
+                      onSelect={(date) =>
+                        setNewUser({
+                          ...newUser,
+                          birthDate: date
+                            ? date.toISOString().split("T")[0]
+                            : "",
+                        })
+                      }
+                      initialFocus
+                      captionLayout="dropdown"
+                      fromYear={1940}
+                      toYear={new Date().getFullYear()}
+                    />
+                  </PopoverContent>
+                </Popover>
               </div>
               <div className="grid gap-2">
                 <Label htmlFor="role">Rol</Label>
