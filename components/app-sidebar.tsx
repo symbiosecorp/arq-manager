@@ -92,16 +92,16 @@ const data = {
           url: "/dashboard/auxadmin/proyectos",
         },
         {
-          title: "Proveedores",
-          url: "#",
+          title: "Usuarios",
+          url: "/dashboard/auxadmin/usuarios",
         },
         {
           title: "Recibos",
           url: "/dashboard/auxadmin/recibos",
         },
         {
-          title: "Usuarios",
-          url: "/settings",
+          title: "Proveedores",
+          url: "#",
         },
         {
           title: "Vacaciones",
