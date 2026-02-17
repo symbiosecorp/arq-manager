@@ -97,7 +97,7 @@ const data = {
         },
         {
           title: "Recibos",
-          url: "/settings",
+          url: "/dashboard/auxadmin/recibos",
         },
         {
           title: "Usuarios",
