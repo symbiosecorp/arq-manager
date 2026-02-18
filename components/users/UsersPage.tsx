@@ -387,9 +387,8 @@ export function UsersPage() {
                       }
                       autoFocus
                       captionLayout="dropdown"
-                      // startMonth={new Date()}
-                      fromYear={1940}
-                      toYear={new Date().getFullYear()}
+                      startMonth={new Date(new Date().getFullYear(), 1)}
+                      endMonth={new Date(new Date().getFullYear(), 12)}
                     />
                   </PopoverContent>
                 </Popover>
