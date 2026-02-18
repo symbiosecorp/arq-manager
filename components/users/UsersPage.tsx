@@ -385,8 +385,9 @@ export function UsersPage() {
                             : "",
                         })
                       }
-                      initialFocus
+                      autoFocus
                       captionLayout="dropdown"
+                      // startMonth={new Date()}
                       fromYear={1940}
                       toYear={new Date().getFullYear()}
                     />
