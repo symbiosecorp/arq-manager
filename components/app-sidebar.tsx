@@ -105,7 +105,7 @@ const data = {
         },
         {
           title: "Vacaciones",
-          url: "/settings",
+          url: "/dashboard/auxadmin/vacaciones-usuarios",
         },
       ],
     },
