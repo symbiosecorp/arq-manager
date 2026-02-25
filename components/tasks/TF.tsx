@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { useDroppable } from "@dnd-kit/react";
 import {
   Card,
   CardAction,
@@ -10,55 +11,16 @@ import {
 } from "@/components/ui/card";
 import { CheckCircle2 } from "lucide-react";
 import { TaskFilter, TaskFilterValues } from "./TaskFilter";
+import { Task } from "./task-types";
+import { SortableTaskItem } from "./SortableTaskItem";
 
-const mockTareasFinalizadas = [
-  {
-    id: 1,
-    title: "Diseño de fachada principal",
-    completedBy: "María López",
-    completedDate: "2026-02-08",
-  },
-  {
-    id: 2,
-    title: "Aprobación de permisos",
-    completedBy: "Juan Pérez",
-    completedDate: "2026-02-05",
-  },
-  {
-    id: 3,
-    title: "Instalación eléctrica fase 1",
-    completedBy: "Roberto Sánchez",
-    completedDate: "2026-02-03",
-  },
-  {
-    id: 4,
-    title: "Revisión de planos",
-    completedBy: "María López",
-    completedDate: "2026-01-28",
-  },
-  {
-    id: 5,
-    title: "Entrega de documentos",
-    completedBy: "Ana García",
-    completedDate: "2026-01-25",
-  },
-];
-
-// Extraer personas únicas para el filtro
-const uniquePeople = Array.from(
-  new Set(mockTareasFinalizadas.map((t) => t.completedBy)),
-).map((name, index) => ({ id: `person-${index}`, name }));
-
-function formatDate(dateStr: string) {
-  const date = new Date(dateStr);
-  return date.toLocaleDateString("es-ES", {
-    day: "numeric",
-    month: "short",
-    year: "numeric",
-  });
+interface TareasFinalizadasProps {
+  tasks: Task[];
 }
 
-export const TareasFinalizadasComponent = () => {
+export const TareasFinalizadasComponent = ({ tasks }: TareasFinalizadasProps) => {
+  const { ref } = useDroppable({ id: "completed" });
+
   const [filters, setFilters] = useState<TaskFilterValues>({
     searchName: "",
     person: "",
@@ -66,39 +28,35 @@ export const TareasFinalizadasComponent = () => {
     dateTo: "",
   });
 
-  const filteredTareas = useMemo(() => {
-    return mockTareasFinalizadas.filter((tarea) => {
-      // Filtrar por nombre
+  const uniquePeople = useMemo(
+    () =>
+      Array.from(new Set(tasks.map((t) => t.completedBy).filter(Boolean))).map(
+        (name, index) => ({ id: `person-${index}`, name: name as string }),
+      ),
+    [tasks],
+  );
+
+  const filteredTasks = useMemo(() => {
+    return tasks.filter((task) => {
       if (
         filters.searchName &&
-        !tarea.title.toLowerCase().includes(filters.searchName.toLowerCase())
+        !task.title.toLowerCase().includes(filters.searchName.toLowerCase())
       ) {
         return false;
       }
-
-      // Filtrar por persona
       if (filters.person) {
-        const personName = uniquePeople.find(
-          (p) => p.id === filters.person,
-        )?.name;
-        if (personName && tarea.completedBy !== personName) {
-          return false;
-        }
+        const personName = uniquePeople.find((p) => p.id === filters.person)?.name;
+        if (personName && task.completedBy !== personName) return false;
       }
-
-      // Filtrar por fecha desde
-      if (filters.dateFrom && tarea.completedDate < filters.dateFrom) {
+      if (filters.dateFrom && task.completedDate && task.completedDate < filters.dateFrom) {
         return false;
       }
-
-      // Filtrar por fecha hasta
-      if (filters.dateTo && tarea.completedDate > filters.dateTo) {
+      if (filters.dateTo && task.completedDate && task.completedDate > filters.dateTo) {
         return false;
       }
-
       return true;
     });
-  }, [filters]);
+  }, [tasks, filters, uniquePeople]);
 
   const activeFiltersCount = [
     filters.searchName,
@@ -137,8 +95,8 @@ export const TareasFinalizadasComponent = () => {
         </CardAction>
       </CardHeader>
 
-      <CardContent className="flex-1 overflow-y-auto p-0">
-        {filteredTareas.length === 0 ? (
+      <CardContent ref={ref} className="flex-1 overflow-y-auto p-0 min-h-16">
+        {filteredTasks.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-8 text-green-600 dark:text-green-400">
             <p className="text-sm">No se encontraron tareas</p>
             {activeFiltersCount > 0 && (
@@ -146,26 +104,13 @@ export const TareasFinalizadasComponent = () => {
             )}
           </div>
         ) : (
-          filteredTareas.map((tarea) => (
-            <div
-              key={tarea.id}
-              className="cursor-pointer border-b border-green-100 dark:border-green-900 px-4 py-3 transition-colors hover:bg-green-100/50 dark:hover:bg-green-900/50"
-            >
-              <div className="flex items-start justify-between">
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="h-4 w-4 text-green-500 dark:text-green-400" />
-                  <h3 className="font-medium text-green-900 dark:text-green-100">
-                    {tarea.title}
-                  </h3>
-                </div>
-              </div>
-              <p className="mt-1 pl-6 text-sm text-green-600 dark:text-green-400">
-                Por: {tarea.completedBy}
-              </p>
-              <p className="pl-6 text-xs text-green-400 dark:text-green-600">
-                Completado: {formatDate(tarea.completedDate)}
-              </p>
-            </div>
+          filteredTasks.map((task, index) => (
+            <SortableTaskItem
+              key={task.id}
+              task={task}
+              index={index}
+              colorScheme="green"
+            />
           ))
         )}
       </CardContent>

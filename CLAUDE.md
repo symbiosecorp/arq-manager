@@ -1,27 +1,27 @@
-# arq-manager — Instrucciones para Claude
+# arq-manager — Instructions for Claude
 
-## Skills disponibles en este proyecto
+## Available Skills in this Project
 
-Este proyecto tiene skills en `.agents/skills/`. Lee el archivo `SKILL.md` correspondiente **antes** de ejecutar cualquier tarea relacionada.
+This project has skills in `.agents/skills/`. Read the corresponding `SKILL.md` file **before** executing any related task.
 
-### Cuándo usar cada skill
+### When to use each skill
 
-| Tarea | Skill a leer |
-|---|---
-| Crear, editar o refactorizar componentes React | `.agents/skills/react-best-practices/SKILL.md` |
-| Revisar patrones de composición, evitar props booleanas, compound components | `.agents/skills/composition-patterns/SKILL.md` |
-| Revisar UI, accesibilidad, performance visual, UX | `.agents/skills/web-design-guidelines/SKILL.md` |
+| Task | Skill to read |
+|---|---|
+| Create, edit or refactor React components | `.agents/skills/react-best-practices/SKILL.md` |
+| Review composition patterns, avoid boolean props, compound components | `.agents/skills/composition-patterns/SKILL.md` |
+| Review UI, accessibility, visual performance, UX | `.agents/skills/web-design-guidelines/SKILL.md` |
 
-### Instrucciones generales
+### General instructions
 
-- **Siempre** lee el `SKILL.md` relevante antes de generar, revisar o refactorizar código.
-- Si la tarea involucra componentes React, consulta tanto `react-best-practices` como `composition-patterns`.
-- Si la tarea involucra diseño o revisión de interfaz, consulta `web-design-guidelines`.
-- No uses props booleanas para variantes de componentes — aplica los patrones de composición de la skill.
-- Prioriza performance: evita renders innecesarios, usa lazy loading cuando aplique.
+- **Always** read the relevant `SKILL.md` before generating, reviewing or refactoring code.
+- If the task involves React components, consult both `react-best-practices` and `composition-patterns`.
+- If the task involves design or interface review, consult `web-design-guidelines`.
+- Do not use boolean props for component variants — apply the composition patterns from the skill.
+- Prioritize performance: avoid unnecessary renders, use lazy loading when applicable.
 
-## Estructura del proyecto
+## Project structure
 
 - Skills: `.agents/skills/`
-- Sigue las convenciones de TypeScript estricto.
-- Preferir `children` sobre `renderX` props para composición.
+- Follow strict TypeScript conventions.
+- Prefer `children` over `renderX` props for composition.

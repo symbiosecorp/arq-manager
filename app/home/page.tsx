@@ -1,7 +1,5 @@
 import { Notes } from "@/components/notes/Notes";
-import { TareasAsignadasComponent } from "@/components/tasks/TA";
-import { TareasFinalizadasComponent } from "@/components/tasks/TF";
-import { TareasRecibidasComponent } from "@/components/tasks/TR";
+import { KanbanBoard } from "@/components/tasks/KanbanBoard";
 
 export default function HomePage() {
   return (
@@ -10,15 +8,7 @@ export default function HomePage() {
         <div className="h-96 lg:h-full">
           <Notes />
         </div>
-        <div className="h-96 lg:h-full">
-          <TareasAsignadasComponent />
-        </div>
-        <div className="h-96 lg:h-full">
-          <TareasRecibidasComponent />
-        </div>
-        <div className="h-96 lg:h-full">
-          <TareasFinalizadasComponent />
-        </div>
+        <KanbanBoard />
       </div>
     </div>
   );
