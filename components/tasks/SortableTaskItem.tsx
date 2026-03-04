@@ -66,11 +66,11 @@ export function SortableTaskItem({ task, index, colorScheme }: SortableTaskItemP
     >
       <button
         ref={handleRef as React.Ref<HTMLButtonElement>}
-        className={`mt-0.5 cursor-grab touch-none active:cursor-grabbing ${mutedClasses[colorScheme]} shrink-0`}
+        className={`cursor-grab touch-none active:cursor-grabbing ${mutedClasses[colorScheme]} shrink-0 p-2 -m-2`}
         aria-label="Drag to reorder"
         tabIndex={-1}
       >
-        <GripVertical className="h-4 w-4" />
+        <GripVertical className="h-5 w-5" />
       </button>
 
       <div className="min-w-0 flex-1">
